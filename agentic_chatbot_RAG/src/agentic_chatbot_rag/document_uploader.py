@@ -5,7 +5,7 @@ from llama_index.core.node_parser import TokenTextSplitter
 from llama_index.core.schema import TextNode
 from llama_index.embeddings.gemini import GeminiEmbedding
 from logg import log_action
-from settings import CACHE_FILE, STORAGE_PATH
+from settings import CACHE_FILE, GEMINI_LLM, STORAGE_PATH
 
 
 def ingest_documents() -> TextNode:
@@ -22,8 +22,10 @@ def ingest_documents() -> TextNode:
             print("No cache found")
         pipeline = IngestionPipeline(
             transformations=[
-                TokenTextSplitter(chunk_size=1024, chunk_overlap=60),
-                SummaryExtractor(summaries=["self"]),  # current node summary only
+                TokenTextSplitter(chunk_size=1024, chunk_overlap=256),
+                SummaryExtractor(
+                    summaries=["self"], GEMINI_LLM=GEMINI_LLM
+                ),  # current node summary only
                 GeminiEmbedding(),
             ],
             cache=cached_hashes,
@@ -37,4 +39,4 @@ def ingest_documents() -> TextNode:
 
 
 if __name__ == "__main__":
-    embedded_nodes = ingest_documents
+    embedded_nodes = ingest_documents()

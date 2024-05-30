@@ -1,3 +1,15 @@
+from dotenv import load_dotenv
+from llama_index.core.settings import Settings
+from llama_index.embeddings.gemini import GeminiEmbedding
+from llama_index.llms.gemini import Gemini
+
+load_dotenv()
+
+GEMINI_LLM = Gemini(model_name="models/gemini-pro", temperature=0.0)
+GEMINI_EMBED = GeminiEmbedding()
+
+Settings.embed_model = GEMINI_EMBED
+
 LOG_FILE: str = "session_data/user_actions.log"
 SESSION_FILE: str = "session_data/user_session_state.yaml"
 CACHE_FILE: str = "cache/pipeline_cache.json"

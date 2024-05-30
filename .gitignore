@@ -1,0 +1,7 @@
+**/src/agentic_chatbot_rag/index_storage/
+**/src/agentic_chatbot_rag/ingestion_storage/
+**/src/agentic_chatbot_rag/session_data/
+**/src/agentic_chatbot_rag/cache/
+**/src/agentic_chatbot_rag/.env
+**/src/agentic_chatbot_rag/__pycache__
+**/src/agentic_chatbot_rag/test.ipynb

@@ -8,12 +8,19 @@ packages = [{include = "agentic_chatbot_rag", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-llama-index-core = "0.10.30"
+llama-index-core = "0.10.39"
 llama-index-program-evaporate = "^0.1.2"
 llama-index-llms-gemini = "0.1.7"
 llama-index-embeddings-gemini = "0.1.6"
 streamlit = "^1.35.0"
+python-dotenv = "^1.0.1"
+llama-index-readers-file = "0.1.19"
+llama-index-program-openai = "^0.1.6"
+llama-index-llms-openai = "^0.1.21"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
 
 [build-system]
 requires = ["poetry-core"]

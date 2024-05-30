@@ -11,6 +11,7 @@ def save_session(state: dict) -> None:
         state (dict): A dictionary of the state details.
     """
     try:
+        state = {key: value for key, value in state.items()}
         with open(SESSION_FILE, "w") as state_file:
             yaml.dump(state, state_file)
     except Exception as e:
@@ -33,7 +34,8 @@ def load_session(state: dict) -> bool:
                 for key, value in loaded_state.items():
                     state[key] = value
                 return True
-    except Exception:
+    except Exception as e:
+        print(e)
         return False
 
 
